@@ -19,5 +19,7 @@ if __name__ == '__main__':
         received_data_int32 = tcp_client.get_values()
         sign_of_life = bool(received_data_int32 & 1)  # Check sign of life bit 0
         received_data_value = received_data_int32 >> 1  # Get value without sign of life bit
-        timestamp = datetime.datetime.now()
-        print('{}   Value: {},   Sign of life: {}'.format(timestamp, received_data_value, sign_of_life))
+
+        if received_data_value:
+            timestamp = datetime.datetime.now()
+            print('{}   Value: {},   Sign of life: {}'.format(timestamp, received_data_value, sign_of_life))
